@@ -13,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 public class App extends BasePage {
     public App loginWithCookie() throws MalformedURLException {
         String url="https://work.weixin.qq.com/";
-
+        System.setProperty("webdriver.chrome.driver","/Users/liyinglong/WebDriver/chromedriver");
         ChromeOptions chromeOptions=new ChromeOptions();
         chromeOptions.setCapability("pageLoadStrategy","none");
-        driver = new ChromeDriver(chromeOptions);
+//        driver = new ChromeDriver(chromeOptions);
 
         driver=new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeOptions);
 
@@ -27,16 +27,14 @@ public class App extends BasePage {
 
         System.out.println(driver.manage().getCookies());
 
-        driver.manage().addCookie(new Cookie("wwrtx.refid", "9156994571588966"));
-//        driver.manage().addCookie(new Cookie("wwrtx.sid", "PvmFAAW3_ZQOnOfp5SzMi6G2ksLVrBXqM1nz3SnTzUm58TfxXhPA3kekfJjTJMK1"));
-//        driver.manage().addCookie(new Cookie("wwrtx.sid", "PvmFAAW3_ZQOnOfp5SzMi5tkp2rMpNclSpq9ybt_pT1A-Y6z1C1Zx7f06qrRVCcR"));
+        driver.manage().addCookie(new Cookie("wwrtx.refid", "30481189592949222"));
+        driver.manage().addCookie(new Cookie("wwrtx.sid", "Tcb6SA36TuYf_VH4RkNXl_0ZOWv05BOjOgam6lJqP01E0sqdbJy_RnE4StGtPncu"));
         driver.navigate().refresh();
         return this;
     }
     public ContactPage toContact(){
         findElement(By.linkText("通讯录")).click();
         return new ContactPage();
-
     }
 
     public ContactPage toMemberAdd(){
@@ -50,4 +48,16 @@ public class App extends BasePage {
         findElement(By.cssSelector(".ww_icon_AppGroupMessageBig")).click();
         return new BroadcastPage();
     }
+
+    public DepartmentPage toDepartment(){
+        findElement(By.linkText("通讯录")).click();
+        return new DepartmentPage();
+    }
+
+    public ManagetoolPage toMaterialLibrary(){
+        findElement(By.linkText("管理工具")).click();
+        findElement(By.xpath("//a[contains(@href, '#material/text')]")).click();
+        return new ManagetoolPage();
+    }
+
 }
