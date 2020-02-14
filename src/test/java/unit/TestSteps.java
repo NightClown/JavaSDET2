@@ -28,7 +28,6 @@ public class TestSteps {
         testcaseStep.setSteps(steps);
         testcase.put("search", testcaseStep);
 
-
         ObjectMapper mapper=new ObjectMapper(new YAMLFactory());
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(testcase));
     }

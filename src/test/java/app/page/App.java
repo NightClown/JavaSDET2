@@ -27,8 +27,11 @@ public class App extends BasePage{
         desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");
         desiredCapabilities.setCapability("noReset", false);
         desiredCapabilities.setCapability("autoGrantPermissions", true);
+        desiredCapabilities.setCapability("udid", System.getenv("UDID"));
 
         URL remoteUrl = new URL("http://127.0.0.1:4723/wd/hub");
+//      SeleniumGrid
+//        URL remoteUrl = new URL("http://127.0.0.1:4444/wd/hub");
 
         driver = new AndroidDriver(remoteUrl, desiredCapabilities);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

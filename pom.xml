@@ -98,12 +98,17 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-<!--                    <excludes>-->
-<!--                        <exclude>some test to exclude here</exclude>-->
-<!--                    </excludes>-->
+                    <includes>
+                        <include>TestSearch.java</include>
+                    </includes>
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.8.2</version>
+            </plugin>
 
             <plugin>
                 <groupId>org.jacoco</groupId>
